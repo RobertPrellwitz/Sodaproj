@@ -18,5 +18,12 @@ namespace SodaMachine
         }
 
     }
+    public class Wallet : Customer
+    {
+        public Wallet()
+        {
+
+        }
+    }
 
 }
