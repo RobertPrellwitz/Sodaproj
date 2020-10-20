@@ -1,7 +1,7 @@
 ﻿using System;
 namespace SodaMachine
 {
-    public class Can
+    public abstract class Can
     {
         public Can()
         {
