@@ -4,43 +4,34 @@ namespace SodaMachine
     public abstract class Coin
     {
         public string name;
-        private double value;
-        public double Value;
-        
-         
-
+        protected double value;
+        public double Value
+        {
+            get
+            {
+                return value;
+            }
+        }
         public Coin()
         {
         }
-        public abstract void SetValue();
+    
     }
     public class Penny : Coin
-
-    {
+    {  
         public Penny()
         {
+            name = "penny";
+            value = 0.01;
         }
-            public override void SetValue()
-        {
-            Value = 0.01;
-        }
-        //public double Value
-        //{
-        //    get
-        //    {
-        //        return value;
-        //    }
-        //}
-
-
-        
     }
 
     public class Nickel : Coin
     {
         public Nickel()
         {
-            private double nickelValue = 0.05;
+            name = "nickel";
+            value = 0.05;
 
         }
     }
@@ -48,14 +39,16 @@ namespace SodaMachine
     {
         public Dime()
         {
-
+            name = "dime";
+            value = 0.10;
         }
     }
     public class Quarter : Coin
     {
         public Quarter()
         {
-
+            name = "quarter";
+            value = 0.25;
         }
     }
 }
