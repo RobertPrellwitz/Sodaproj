@@ -15,44 +15,46 @@ namespace SodaMachine
 
         public Simulation()
         {
-            SodaMachine machine = new SodaMachine();
-            BackPack patagoinia = new BackPack();
-            Wallet trifold = new Wallet();
+            customer = new Customer();
+            // INSTANTIATE customer
+            //SodaMachine machine = new SodaMachine();
+            //BackPack patagoinia = new BackPack();
+            //Wallet trifold = new Wallet();
         }
 
         public void Purchase()
         {
-            SodaMachine machine = new SodaMachine();
-            BackPack patagoinia = new BackPack();
-            Wallet trifold = new Wallet();
+            sodaMachine = new SodaMachine();
+            // BackPack patagoinia = new BackPack();
+            //Wallet trifold = new Wallet();
 
-            Console.WriteLine($"you have {trifold.totalWallet} in your wallet");
+            Console.WriteLine($"you have {customer.walletobj.totalWallet} in your wallet");
 
-            trifold.CurrentChange();
+            customer.walletobj.CurrentChange();
             Console.WriteLine($"you have the following in your backpack");
-            patagoinia.BackPackContents();
-
+           
+            customer.pack.BackPackContents();
             //machine.MachineChange();
             //machine.MachineStock();
-            machine.CurrentInventory();
+            sodaMachine.CurrentInventory();
 
             customer.ChooseSoda();
             customer.MakePayment();
 
-            machine.DepositPayment();
-            trifold.removeCoins();
-            machine.MakeChange();
-            machine.DispenseProduct();
+            sodaMachine.DepositPayment();
+            customer.walletobj.removeCoins();
+            sodaMachine.MakeChange();
+            sodaMachine.DispenseProduct();
 
-            patagoinia.AddToBackPack();
+            customer.AddToBackPack();
 
-            trifold.addCoins();
+            customer.walletobj.addCoins();
 
 
 
-            machine.CurrentInventory();
-            trifold.CurrentChange();
-            patagoinia.BackPackContents();
+            sodaMachine.CurrentInventory();
+            customer.walletobj.CurrentChange();
+            //customer.BackPackContents();
         }
                 
 

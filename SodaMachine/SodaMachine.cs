@@ -6,7 +6,7 @@ namespace SodaMachine
 
     {
         public Customer customer;
-        public Quarter quarter;
+        // public Quarter quarter;
         public Dime dime;
         public Nickel nickel;
         public Penny penny;
@@ -113,10 +113,15 @@ namespace SodaMachine
             //Math.Round()
             double change = pmt - customer.selection.Cost;
             changeCoins = new List<Coin>();
-            while (change > quarter.Value)
+            while (change > .25)
             {
-                changeCoins.Add(quarter);
+                // loop through 'register', looking for a "quarter"
+                // once we find the quarter object, set it to the below var
+                Coin quarter = null;
+
                 register.Remove(quarter);
+                changeCoins.Add(quarter);
+                
                 change = change - quarter.Value;
             }
             while (change > dime.Value)

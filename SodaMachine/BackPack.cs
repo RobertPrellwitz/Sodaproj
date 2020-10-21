@@ -12,10 +12,10 @@ namespace SodaMachine
             sodas = new List<Can>();
         }
 
-        public void AddToBackPack()
-        {
-            pack.sodas.Add(selection);
-        }
+        //public void AddToBackPack()
+        //{
+        //    pack.sodas.Add(selection);
+        //}
         public void BackPackContents()
         {
             for (int i = 0; i < sodas.Count; i++)

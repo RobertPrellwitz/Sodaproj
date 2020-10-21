@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 namespace SodaMachine
 {
-    public class Wallet : Customer
+    public class Wallet
     {
         public double totalWallet;
         public List<Coin> coins;
@@ -11,9 +11,11 @@ namespace SodaMachine
         public int nickelCount;
         public int pennyCount;
         public SodaMachine sodaMachine;
+        public Customer customer;
 
         public Wallet()
         {
+
             totalWallet = 0;
             coins = new List<Coin>();
 
@@ -60,23 +62,23 @@ namespace SodaMachine
 
         public void removeCoins()
         {
-            for (int i = 0; i < payment.Count; i++)
+            for (int i = 0; i < coins.Count; i++)
             {
-                if (payment[i] == quarter)
+                if (customer.payment[i].name == "quarter")
                 {
-                    coins.Remove(quarter);
+                    coins.Remove(customer.payment[i]);
                 }
-                if (payment[i] == dime)
+                if (customer.payment[i].name == "dime")
                 {
-                    coins.Remove(dime);
+                    coins.Remove(customer.payment[i]);
                 }
-                if (payment[i] == nickel)
+                if (customer.payment[i].name == "nickel")
                 {
-                    coins.Remove(nickel);
+                    coins.Remove(customer.payment[i]);
                 }
-                if (payment[i] == penny)
+                if (customer.payment[i].name == "penny")
                 {
-                    coins.Remove(penny);
+                    coins.Remove(customer.payment[i]);
                 }
             }
         }
@@ -84,21 +86,23 @@ namespace SodaMachine
         {
             for (int i = 0; i < sodaMachine.changeCoins.Count; i++)
             {
-                if (sodaMachine.changeCoins[i] == quarter)
+                if (sodaMachine.changeCoins[i].name == "quarter")
                 {
-                    coins.Add(quarter);
+                    // Quarter quarter = new Quarter();
+                    //Coin quarter = sodaMachine.changeCoins[i];
+                    coins.Add(sodaMachine.changeCoins[i]);
                 }
-                if (sodaMachine.changeCoins[i] == dime)
+                if (sodaMachine.changeCoins[i].name == "dime")
                 {
-                    coins.Add(dime);
+                    coins.Add(sodaMachine.changeCoins[i]);
                 }
-                if (sodaMachine.changeCoins[i] == nickel)
+                if (sodaMachine.changeCoins[i].name == "nickel")
                 {
-                    coins.Add(nickel);
+                    coins.Add(sodaMachine.changeCoins[i]);
                 }
-                if (sodaMachine.changeCoins[i] == penny)
+                if (sodaMachine.changeCoins[i].name == "penny")
                 {
-                    coins.Add(penny);
+                    coins.Add(sodaMachine.changeCoins[i]);
                 }
             }
         }
