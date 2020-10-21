@@ -17,14 +17,14 @@ namespace SodaMachine
         {
             customer = new Customer();
             // INSTANTIATE customer
-            //SodaMachine machine = new SodaMachine();
+            sodaMachine = new SodaMachine();
             //BackPack patagoinia = new BackPack();
             //Wallet trifold = new Wallet();
         }
 
         public void Purchase()
         {
-            sodaMachine = new SodaMachine();
+            
             // BackPack patagoinia = new BackPack();
             //Wallet trifold = new Wallet();
 
@@ -39,12 +39,27 @@ namespace SodaMachine
             sodaMachine.CurrentInventory();
 
             customer.ChooseSoda();
-            customer.MakePayment();
 
-            sodaMachine.DepositPayment();
+
+            Console.WriteLine("Please select which coins to use:\n1 penny \n2 nickel \n3 dime \n 4 quarter");
+            customer.MakePayment();
+            //customer.MakePayment();
+            //customer.MakePayment();
+
+            Console.WriteLine("you put the following in the machine");
+            double total = 0;
+            for (int i = 0; i < customer.payment.Count; i++)
+            {
+                Console.WriteLine(customer.payment[i].name);
+                total = total + customer.payment[i].Value;
+            }
+            Console.WriteLine($"which totals :{total}");
+           
+
+            sodaMachine.ProcessPayment(customer);
             customer.walletobj.removeCoins();
             sodaMachine.MakeChange();
-            sodaMachine.DispenseProduct();
+            
 
             customer.AddToBackPack();
 

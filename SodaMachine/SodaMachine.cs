@@ -22,6 +22,7 @@ namespace SodaMachine
         public List<Can> inventory;
         public SodaMachine()
         {
+            //customer = new Customer();
             register = new List<Coin>();
             for (int i = 0; i < 20; i++)
             {
@@ -74,7 +75,7 @@ namespace SodaMachine
                  $"\n{orangeCount} orange sodas");
 
         }
-        public void ProcessPayment()
+        public void ProcessPayment(Customer customer)
         {
              pmt=0;
             for (int i = 0; i < customer.payment.Count; i++)
@@ -87,19 +88,19 @@ namespace SodaMachine
             }
             else if (pmt == customer.selection.Cost)
             {
-                DepositPayment();
-                DispenseProduct();
+                DepositPayment(customer);
+                DispenseProduct(customer);
             }
             else if (pmt > customer.selection.Cost)
             {
-                DepositPayment();
-                DispenseProduct();
+                DepositPayment(customer);
+                DispenseProduct(customer);
                 MakeChange();
             }
 
 
         }
-        public void DepositPayment()
+        public void DepositPayment(Customer customer)
         {
             for (int i = 0; i < customer.payment.Count; i++)
             {
@@ -155,7 +156,7 @@ namespace SodaMachine
             }
         }
 
-        public void DispenseProduct()
+        public void DispenseProduct(Customer customer)
         {
             inventory.Remove(customer.selection);
         }

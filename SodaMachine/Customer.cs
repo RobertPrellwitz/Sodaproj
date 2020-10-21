@@ -53,7 +53,7 @@ namespace SodaMachine
             }
             else
             {
-                ChooseSoda();
+               // ChooseSoda();
             }
         }
 
@@ -62,35 +62,43 @@ namespace SodaMachine
         {
             payment = new List<Coin>();
             walletobj.CurrentChange();
-            // console selection options 1 penny 2 nickel 3 dime 4 quarter
-            int choice;
-            bool check = Int32.TryParse(Console.ReadLine(), out choice);
-            if (check)
+            int temp=1;
+            do
             {
-                if (choice == 1)
+                // console selection options 1 penny 2 nickel 3 dime 4 quarter
+                int choice;
+                bool check = Int32.TryParse(Console.ReadLine(), out choice);
+                if (check)
                 {
-                    payment.Add(new Penny());
+                    if (choice == 1)
+                    {
+                        payment.Add(new Penny());
+                    }
+                    if (choice == 2)
+                    {
+                        payment.Add(new Nickel());
+                    }
+                    if (choice == 3)
+                    {
+                        payment.Add(new Dime());
+                    }
+                    if (choice == 4)
+                    {
+                        payment.Add(new Quarter());
+                    }
+                    else
+                    {
+                        //MakePayment();
+                    }
+                    Console.WriteLine("Would you like to add another coin? 1 = yes 2 = no");
+
+                    temp = Convert.ToInt32(Console.ReadLine());
+
                 }
-                if (choice == 2)
-                {
-                    payment.Add(new Nickel());
-                }
-                if (choice == 2)
-                {
-                    payment.Add(new Dime());
-                }
-                if (choice == 4)
-                {
-                    payment.Add(new Quarter());
-                }
-                else
-                {
-                    MakePayment();
-                }
+
             }
-
-
-
+            while (temp == 1);
+             
         }
         public void AddToBackPack()
         {
