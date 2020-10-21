@@ -4,7 +4,9 @@ namespace SodaMachine
 {
     public class SodaMachine
 
-    {   public int colaCount;
+    {
+        public Customer customer;
+        public int colaCount;
         public int rootBeerCount;
         public int orangeCount;
 
@@ -40,40 +42,8 @@ namespace SodaMachine
             }
         }
 
-        //public void MachineChange()
-        //{
-        //    register = new List<Coin>();
-        //    for (int i = 0; i < 20; i++)
-        //    {
-        //        register.Add(new Quarter());
-        //        register.Add(new Nickel());
-
-        //    }
-        //    for (int i = 0; i < 50; i++)
-        //    {
-        //        register.Add(new Penny());
-
-        //    }
-        //}
-        //public void MachineStock()
-        //{
-        //    for (int i = 0; i < 10; i++)
-        //    {
-        //        register.Add(new Dime());
-        //    }
-        //    inventory = new List<Can>();
-
-        //    for (int i = 0; i < 15; i++)
-        //    {
-        //        inventory.Add(new Cola());
-        //        inventory.Add(new RootBeer());
-        //        inventory.Add(new Orange());
-
-        //    }
-
-            //}
-
-            public void CurrentInventory()
+        
+        public void CurrentInventory()
         {
             colaCount = 0; rootBeerCount = 0; orangeCount = 0;
             for (int i = 0; i < inventory.Count; i++)
@@ -96,6 +66,15 @@ namespace SodaMachine
                  $"{colaCount} colas \n{rootBeerCount} Root Beer" +
                  $"\n{orangeCount} orange sodas");
 
+        }
+        public void ProcessPayment()
+        {
+
+        }
+
+        public void DispenseProduct()
+        {
+            inventory.Remove(customer.selection);
         }
 
     }
