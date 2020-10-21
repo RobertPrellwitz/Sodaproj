@@ -10,6 +10,7 @@ namespace SodaMachine
         public int dimeCount;
         public int nickelCount;
         public int pennyCount;
+        public SodaMachine sodaMachine;
 
         public Wallet()
         {
@@ -81,24 +82,25 @@ namespace SodaMachine
         }
         public void addCoins()
         {
-            for (int i = 0; i < changeCoins.Count; i++)
+            for (int i = 0; i < sodaMachine.changeCoins.Count; i++)
             {
-                if (payment[i] == quarter)
+                if (sodaMachine.changeCoins[i] == quarter)
                 {
                     coins.Add(quarter);
                 }
-                if (payment[i] == dime)
+                if (sodaMachine.changeCoins[i] == dime)
                 {
                     coins.Add(dime);
                 }
-                if (payment[i] == nickel)
+                if (sodaMachine.changeCoins[i] == nickel)
                 {
                     coins.Add(nickel);
                 }
-                if (payment[i] == penny)
+                if (sodaMachine.changeCoins[i] == penny)
                 {
                     coins.Add(penny);
                 }
             }
         }
+    }
 }
