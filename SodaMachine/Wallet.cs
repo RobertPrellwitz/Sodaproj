@@ -52,7 +52,7 @@ namespace SodaMachine
 
             }
             Console.WriteLine($"Your wallet currently holds\n{pennyCount} pennies" +
-                $"{nickelCount} nickels\n{dimeCount} dimes\n{quarterCount} quarters");
+                $"\n{nickelCount} nickels\n{dimeCount} dimes\n{quarterCount} quarters");
 
 
         }
