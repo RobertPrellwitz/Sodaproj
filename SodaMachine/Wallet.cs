@@ -56,5 +56,49 @@ namespace SodaMachine
 
 
         }
-    }
+
+        public void removeCoins()
+        {
+            for (int i = 0; i < payment.Count; i++)
+            {
+                if (payment[i] == quarter)
+                {
+                    coins.Remove(quarter);
+                }
+                if (payment[i] == dime)
+                {
+                    coins.Remove(dime);
+                }
+                if (payment[i] == nickel)
+                {
+                    coins.Remove(nickel);
+                }
+                if (payment[i] == penny)
+                {
+                    coins.Remove(penny);
+                }
+            }
+        }
+        public void addCoins()
+        {
+            for (int i = 0; i < changeCoins.Count; i++)
+            {
+                if (payment[i] == quarter)
+                {
+                    coins.Add(quarter);
+                }
+                if (payment[i] == dime)
+                {
+                    coins.Add(dime);
+                }
+                if (payment[i] == nickel)
+                {
+                    coins.Add(nickel);
+                }
+                if (payment[i] == penny)
+                {
+                    coins.Add(penny);
+                }
+            }
+        }
 }

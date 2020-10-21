@@ -6,8 +6,12 @@ namespace SodaMachine
     {
         public Can selection;
         public BackPack pack;
-        public Wallet tri;
+        public Wallet wallet;
         public List<Coin> payment;
+        public Quarter quarter;
+        public Dime dime;
+        public Nickel nickel;
+        public Penny penny;
         //public Coin coin;
 
         public Customer()
@@ -52,7 +56,7 @@ namespace SodaMachine
         public void MakePayment()
         {
             payment = new List<Coin>();
-            tri.CurrentChange();
+            wallet.CurrentChange();
             // console selection options 1 penny 2 nickel 3 dime 4 quarter
             int choice;
             bool check = Int32.TryParse(Console.ReadLine(), out choice);
@@ -83,6 +87,17 @@ namespace SodaMachine
 
 
         }
+        //public void removeCoins()
+        //{
+        //    for (int i = 0; i < payment.Count; i++)
+        //    {
+        //        if (payment[i] == quarter)
+        //        {
+        //           coi.
+        //        }
+
+        //    }
+        //}
 
         public void AddToBackPack()
         {

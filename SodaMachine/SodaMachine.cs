@@ -6,12 +6,18 @@ namespace SodaMachine
 
     {
         public Customer customer;
+        public Quarter quarter;
+        public Dime dime;
+        public Nickel nickel;
+        public Penny penny;
+
         public int colaCount;
         public int rootBeerCount;
         public int orangeCount;
         public double pmt;
+        
 
-        public List<Coin> coins;
+        public List<Coin> changeCoins;
         public List<Coin> register;
         public List<Can> inventory;
         public SodaMachine()
@@ -102,33 +108,47 @@ namespace SodaMachine
        
         }
 
-        public void MakeChange()//Quarter quarter, Dime dime, Nickel nickel, Penny penny)
+        public void MakeChange()
         {
             double change = pmt - customer.selection.Cost;
-            coins = new List<Coin>();
-            while (change > register.)
+            changeCoins = new List<Coin>();
+            while (change > quarter.Value)
             {
-                coins.Add(quarter);
+                changeCoins.Add(quarter);
+                register.Remove(quarter);
                 change = change - quarter.Value;
             }
             while (change > dime.Value)
             {
-                coins.Add(dime);
+                changeCoins.Add(dime);
+                register.Remove(dime);
                 change = change - dime.Value;
             }
             while (change > nickel.Value)
             {
-                coins.Add(nickel);
+                register.Remove(nickel);
+                changeCoins.Add(nickel);
                 change = change - nickel.Value;
             }
             while (change > penny.Value)
             {
-                coins.Add(penny);
+                register.Remove(penny);
+                changeCoins.Add(penny);
                 change = change - penny.Value;
             }
 
 
         }
+        public void totalChange()
+        {
+            double totalChange =0;
+            for (int i = 0; i < changeCoins.Count; i++)
+            {
+                totalChange = totalChange + changeCoins[i].Value;
+
+            }
+        }
+
         public void DispenseProduct()
         {
             inventory.Remove(customer.selection);
