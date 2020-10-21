@@ -7,6 +7,14 @@ namespace SodaMachine
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+
+            Wallet trifold = new Wallet();
+            Console.WriteLine($"you have {trifold.totalWallet} in your wallet" );
+
+            SodaMachine machine = new SodaMachine();
+            //machine.MachineChange();
+            //machine.MachineStock();
+            machine.CurrentInventory();
         }
     }
 }
