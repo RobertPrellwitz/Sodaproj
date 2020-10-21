@@ -9,14 +9,9 @@ namespace SodaMachine
             
             Console.WriteLine("Hello World!");
 
-            Wallet trifold = new Wallet();
-            Console.WriteLine($"you have {trifold.totalWallet} in your wallet" );
-            trifold.CurrentChange();
 
-            SodaMachine machine = new SodaMachine();
-            //machine.MachineChange();
-            //machine.MachineStock();
-            machine.CurrentInventory();
+            Simulation Pepsi = new Simulation();
+            Pepsi.Purchase();
 
 
 

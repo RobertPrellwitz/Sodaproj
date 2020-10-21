@@ -110,6 +110,7 @@ namespace SodaMachine
 
         public void MakeChange()
         {
+            //Math.Round()
             double change = pmt - customer.selection.Cost;
             changeCoins = new List<Coin>();
             while (change > quarter.Value)

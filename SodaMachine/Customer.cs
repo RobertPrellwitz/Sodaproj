@@ -12,28 +12,32 @@ namespace SodaMachine
         public Dime dime;
         public Nickel nickel;
         public Penny penny;
+        public Cola cola;
+        public Orange orange;
+        public RootBeer rootBeer;
         //public Coin coin;
 
         public Customer()
         {
 
-            //Cola cola = new Cola();
-            //RootBeer rootBeer = new RootBeer();
-            //Orange orange = new Orange();
+            cola = new Cola();
+            rootBeer = new RootBeer();
+            orange = new Orange();
+            pack = new BackPack();
 
         }
-        public void ChooseSoda(Cola cola, Orange orange, RootBeer rootBeer)
+        public void ChooseSoda()
         {
 
-        Console.WriteLine($"Please select your soda\n 1 for Cola\n" +
-            $"\n2 for Root Beer\n3 for Orange Soda ");
+            Console.WriteLine($"Please select your soda\n 1 for Cola\n" +
+                $"\n2 for Root Beer\n3 for Orange Soda ");
             int choice;
             bool check = Int32.TryParse(Console.ReadLine(), out choice);
             if (check)
             {
                 if (choice == 1)
                 {
-                     Console.WriteLine($"Please put in ${cola.Cost}");
+                    Console.WriteLine($"Please put in ${cola.Cost}");
                     selection = cola;
                 }
                 else if (choice == 2)
@@ -51,7 +55,7 @@ namespace SodaMachine
                     //ChooseSoda();
                 }
             }
-        
+
         }
         public void MakePayment()
         {
@@ -87,21 +91,17 @@ namespace SodaMachine
 
 
         }
-        //public void removeCoins()
-        //{
-        //    for (int i = 0; i < payment.Count; i++)
-        //    {
-        //        if (payment[i] == quarter)
-        //        {
-        //           coi.
-        //        }
-
-        //    }
-        //}
-
         public void AddToBackPack()
         {
             pack.sodas.Add(selection);
+        }
+        public void BackPackContents()
+        {
+            for (int i = 0; i < pack.sodas.Count; i++)
+            {
+                Console.WriteLine($"{pack.sodas[i].name}");
+
+            }
         }
     }
 
