@@ -27,17 +27,31 @@ namespace SodaMachine
             walletobj = new Wallet();
 
         }
-        public void ChooseSoda(List<Can>cans)
+
+        //public int SodaSelection()
+        //{
+        //    int choice;
+        //    bool check = Int32.TryParse(Console.ReadLine(), out choice);
+        //    if (check)
+        //    {
+        //        if (choice == 1 || choice == 2 || choice == 3)
+        //        {
+        //            return choice;
+        //        }
+        //        else
+        //        {
+                    
+        //        }
+        //    }
+        //}
+
+
+        public void ChooseSoda(List<Can>cans,int choice)
         {
-            Console.WriteLine($"Please select your soda\n\n 1 for Cola" +
-                $"\n2 for Root Beer\n3 for Orange Soda ");
-            int choice;
-            bool check = Int32.TryParse(Console.ReadLine(), out choice);
-            if (check)
-            {
+            
                 if (choice == 1)
                 {
-                    Console.WriteLine($"Please put in ${cola.Cost}");
+                    Console.WriteLine($"Please put in ${Cola.price}");
                     foreach (var can in cans)
                     {
                         if (can.name == "Cola")
@@ -50,7 +64,7 @@ namespace SodaMachine
                 }
                 else if (choice == 2)
                 {
-                    Console.WriteLine($"Please put in ${rootBeer.Cost}");
+                    Console.WriteLine($"Please put in ${RootBeer.price}");
                     foreach (var can in cans)
                     {
                         if (can.name == "Root Beer")
@@ -63,7 +77,7 @@ namespace SodaMachine
 
                 else if (choice == 3)
                 {
-                    Console.WriteLine($"Please put in ${orange.Cost}");
+                    Console.WriteLine($"Please put in ${Orange.price}");
                     foreach (var can in cans)
                     {
                         if (can.name == "Orange")
@@ -73,19 +87,13 @@ namespace SodaMachine
                         }
                     }
                 }
-            else
-            {
-               // ChooseSoda();
-            }
-        }
-
         }
 
         
         public void MakePayment(List<Coin> coins)
         {
             payment = new List<Coin>();
-            ///walletobj.CurrentChange();
+            double hand = 0;
             int temp=1;
             do
             {
@@ -102,6 +110,7 @@ namespace SodaMachine
                             {
                                 walletobj.coins.Remove(item);
                                 payment.Add(item);
+                                hand = hand + item.Value;
                                 break;
                             }
                             
@@ -116,6 +125,7 @@ namespace SodaMachine
                             {
                                 walletobj.coins.Remove(item);
                                 payment.Add(item);
+                                hand = hand + item.Value;
                                 break;
                             }
                           
@@ -129,6 +139,7 @@ namespace SodaMachine
                             {
                                 walletobj.coins.Remove(item);
                                 payment.Add(item);
+                                hand = hand + item.Value;
                                 break;
                             }
                            
@@ -142,6 +153,7 @@ namespace SodaMachine
                             {
                                 walletobj.coins.Remove(item);
                                 payment.Add(item);
+                                hand = hand + item.Value;
                                 break;
                             }
                             
@@ -151,6 +163,7 @@ namespace SodaMachine
                     {
                         //MakePayment();
                     }
+                    Console.WriteLine($"You have selected coins that total {Math.Round(hand,2)}\n" );
                     Console.WriteLine("Would you like to add another coin? 1 = yes 2 = no");
 
                     temp = Convert.ToInt32(Console.ReadLine());

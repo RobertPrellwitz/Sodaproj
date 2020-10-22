@@ -11,7 +11,7 @@ namespace SodaMachine
         public Nickel nickel;
         public Penny penny;
 
-        public int colaCount;
+        public int colaCount; 
         public int rootBeerCount;
         public int orangeCount;
         public double pmt;
@@ -23,7 +23,7 @@ namespace SodaMachine
         public List<Can> inventory;
         public SodaMachine()
         {
-            //customer = new Customer();
+           
             register = new List<Coin>();
             for (int i = 0; i < 20; i++)
             {
@@ -55,25 +55,29 @@ namespace SodaMachine
         public void CurrentInventory()
         {
             colaCount = 0; rootBeerCount = 0; orangeCount = 0;
+            
             for (int i = 0; i < inventory.Count; i++)
             {
                 if (inventory[i].name == "Cola")
                 {
                     colaCount = ++colaCount;
+                   
                 }
                 else if (inventory[i].name == "Root Beer")
                 {
                     rootBeerCount = ++rootBeerCount;
+                    
                 }
                 else if (inventory[i].name == "Orange")
                 {
                     orangeCount = ++orangeCount;
+                   
                 }
 
             }
             Console.WriteLine($"The machine currently holds the following:\n" +
-                 $"{colaCount} colas \n{rootBeerCount} Root Beer" +
-                 $"\n{orangeCount} orange sodas");
+                 $"{colaCount} cola - price {Cola.price} \n{rootBeerCount} Root Beer - cost  {RootBeer.price}" +
+                 $"\n{orangeCount} orange sodas - cost {Orange.price}");
 
         }
         public void ProcessPayment(Customer customer)

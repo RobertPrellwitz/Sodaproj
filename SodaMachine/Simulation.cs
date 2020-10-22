@@ -22,6 +22,21 @@ namespace SodaMachine
             //Wallet trifold = new Wallet();
         }
 
+        public void BuySoda()
+        {
+            UserInterface.Hello();
+            sodaMachine.CurrentInventory();
+            int buy =UserInterface.BuyQuestion();
+            customer.ChooseSoda(sodaMachine.inventory, buy);
+            UserInterface.WalletDisplay(customer,customer.walletobj);
+            
+        }
+
+
+
+
+
+
         public void Purchase()
         {
             
@@ -38,7 +53,9 @@ namespace SodaMachine
             //machine.MachineStock();
             sodaMachine.CurrentInventory();
 
-            customer.ChooseSoda(sodaMachine.inventory);
+           
+
+            //customer.ChooseSoda(sodaMachine.inventory);
 
             customer.walletobj.CurrentChange();
 
@@ -61,12 +78,12 @@ namespace SodaMachine
 
             customer.AddToBackPack();
 
-            sodaMachine.TotalChange();
+            //sodaMachine.TotalChange();
 
-            Console.WriteLine($"Your total change is: {Math.Round(sodaMachine.totalChange,2)}");
+            //Console.WriteLine($"Your total change is: {Math.Round(sodaMachine.totalChange,2)}");
 
 
-            customer.AddToWallet(sodaMachine.changeCoins);
+            //customer.AddToWallet(sodaMachine.changeCoins);
 
 
 

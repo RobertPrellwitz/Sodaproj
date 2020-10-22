@@ -25,12 +25,18 @@ namespace SodaMachine
                 coins.Add(new Dime());
                 coins.Add(new Nickel());
             }
+            
+
+        }
+        public double TotalWallet()
+        {
             for (int i = 0; i < coins.Count; i++)
             {
                 totalWallet = Math.Round(totalWallet + coins[i].Value, 2);
             }
-
+            return totalWallet;
         }
+
         public void CurrentChange()
         {
             quarterCount = 0; dimeCount = 0; nickelCount = 0; pennyCount = 0;
@@ -57,54 +63,7 @@ namespace SodaMachine
             Console.WriteLine($"Your wallet currently holds\n{pennyCount} pennies" +
                 $"\n{nickelCount} nickels\n{dimeCount} dimes\n{quarterCount} quarters");
 
-
         }
 
-        //public void removeCoins(Customer customer)
-        //{
-        //    for (int i = 0; i < customer.payment.Count; i++)
-        //    {
-        //        if (customer.payment[i].name == "quarter")
-        //        {
-        //            coins.Remove(customer.payment[i]);
-        //        }
-        //        if (customer.payment[i].name == "dime")
-        //        {
-        //            coins.Remove(customer.payment[i]);
-        //        }
-        //        if (customer.payment[i].name == "nickel")
-        //        {
-        //            coins.Remove(customer.payment[i]);
-        //        }
-        //        if (customer.payment[i].name == "penny")
-        //        {
-        //            coins.Remove(customer.payment[i]);
-        //        }
-        //    }
-        //}
-        public void addCoins()
-        {
-            for (int i = 0; i < sodaMachine.changeCoins.Count; i++)
-            {
-                if (sodaMachine.changeCoins[i].name == "quarter")
-                {
-                    // Quarter quarter = new Quarter();
-                    //Coin quarter = sodaMachine.changeCoins[i];
-                    coins.Add(sodaMachine.changeCoins[i]);
-                }
-                if (sodaMachine.changeCoins[i].name == "dime")
-                {
-                    coins.Add(sodaMachine.changeCoins[i]);
-                }
-                if (sodaMachine.changeCoins[i].name == "nickel")
-                {
-                    coins.Add(sodaMachine.changeCoins[i]);
-                }
-                if (sodaMachine.changeCoins[i].name == "penny")
-                {
-                    coins.Add(sodaMachine.changeCoins[i]);
-                }
-            }
-        }
     }
 }
