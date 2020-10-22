@@ -15,6 +15,7 @@ namespace SodaMachine
         public int rootBeerCount;
         public int orangeCount;
         public double pmt;
+        public double totalChange;
         
 
         public List<Coin> changeCoins;
@@ -95,7 +96,7 @@ namespace SodaMachine
             {
                 DepositPayment(customer);
                 DispenseProduct(customer);
-                MakeChange();
+                MakeChange(customer,register);
             }
 
 
@@ -109,46 +110,71 @@ namespace SodaMachine
        
         }
 
-        public void MakeChange()
+        public void MakeChange(Customer customer, List<Coin> coins)
         {
             //Math.Round()
             double change = pmt - customer.selection.Cost;
             changeCoins = new List<Coin>();
-            while (change > .25)
+            while (change > 0.25)
             {
-                // loop through 'register', looking for a "quarter"
-                // once we find the quarter object, set it to the below var
-                Coin quarter = null;
+                foreach (var item in coins)
+                {
+                    if (item.Value == 0.25)
+                    {
+                        register.Remove(item);
+                        changeCoins.Add(item);
+                        change = change - item.Value;
+                        break;
+                    }
+                }
 
-                register.Remove(quarter);
-                changeCoins.Add(quarter);
-                
-                change = change - quarter.Value;
             }
-            while (change > dime.Value)
+            while (change > 0.10)
             {
-                changeCoins.Add(dime);
-                register.Remove(dime);
-                change = change - dime.Value;
+                foreach (var item in coins)
+                {
+                    if (item.Value == 0.10)
+                    {
+                        register.Remove(item);
+                        changeCoins.Add(item);
+                        change = change - item.Value;
+                        break;
+                    }
+                }
+
             }
-            while (change > nickel.Value)
+            while (change > 0.05)
             {
-                register.Remove(nickel);
-                changeCoins.Add(nickel);
-                change = change - nickel.Value;
+                foreach (var item in coins)
+                {
+                    if (item.Value == 0.05)
+                    {
+                        register.Remove(item);
+                        changeCoins.Add(item);
+                        change = change - item.Value;
+                        break;
+                    }
+                }
             }
-            while (change > penny.Value)
+            while (change > 0.01)
             {
-                register.Remove(penny);
-                changeCoins.Add(penny);
-                change = change - penny.Value;
+                foreach (var item in coins)
+                {
+                    if (item.Value == 0.01)
+                    {
+                        register.Remove(item);
+                        changeCoins.Add(item);
+                        change = change - item.Value;
+                        break;
+                    }
+                }
             }
 
 
         }
-        public void totalChange()
+        public void TotalChange()
         {
-            double totalChange =0;
+            totalChange =0;
             for (int i = 0; i < changeCoins.Count; i++)
             {
                 totalChange = totalChange + changeCoins[i].Value;
