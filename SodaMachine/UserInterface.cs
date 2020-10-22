@@ -3,8 +3,9 @@ namespace SodaMachine
 {
     public class UserInterface
     {
-        public UserInterface()
+        static UserInterface()
         {
         }
+
     }
 }

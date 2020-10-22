@@ -6,7 +6,7 @@ namespace SodaMachine
 
     {
         public Customer customer;
-        // public Quarter quarter;
+        public Quarter quarter;
         public Dime dime;
         public Nickel nickel;
         public Penny penny;
@@ -41,7 +41,7 @@ namespace SodaMachine
             }
             inventory = new List<Can>();
 
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < 5; i++)
             {
                 inventory.Add(new Cola());
                 inventory.Add(new RootBeer());
@@ -158,7 +158,8 @@ namespace SodaMachine
 
         public void DispenseProduct(Customer customer)
         {
-            inventory.Remove(customer.selection);
+            Can can = customer.selection;
+            inventory.Remove(can);
         }
 
     }

@@ -31,7 +31,7 @@ namespace SodaMachine
             Console.WriteLine($"you have {customer.walletobj.totalWallet} in your wallet");
 
             customer.walletobj.CurrentChange();
-            Console.WriteLine($"you have the following in your backpack");
+            Console.WriteLine($"\nyou have the following in your backpack");
            
             customer.pack.BackPackContents();
             //machine.MachineChange();
@@ -41,7 +41,7 @@ namespace SodaMachine
             customer.ChooseSoda();
 
 
-            Console.WriteLine("Please select which coins to use:\n1 penny \n2 nickel \n3 dime \n 4 quarter");
+            Console.WriteLine("\nPlease select which coins to use:\n1 penny \n2 nickel \n3 dime \n 4 quarter");
             customer.MakePayment();
             //customer.MakePayment();
             //customer.MakePayment();
@@ -57,13 +57,16 @@ namespace SodaMachine
            
 
             sodaMachine.ProcessPayment(customer);
-            customer.walletobj.removeCoins();
-            sodaMachine.MakeChange();
+
+            sodaMachine.CurrentInventory();
+
+            customer.walletobj.removeCoins(customer);
+            //sodaMachine.MakeChange();
             
 
             customer.AddToBackPack();
 
-            customer.walletobj.addCoins();
+           // customer.walletobj.addCoins();
 
 
 

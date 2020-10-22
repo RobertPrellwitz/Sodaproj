@@ -19,7 +19,7 @@ namespace SodaMachine
             totalWallet = 0;
             coins = new List<Coin>();
 
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < 5; i++)
             {
                 coins.Add(new Quarter());
                 coins.Add(new Dime());
@@ -60,13 +60,13 @@ namespace SodaMachine
 
         }
 
-        public void removeCoins()
+        public void removeCoins(Customer customer)
         {
-            for (int i = 0; i < coins.Count; i++)
+            for (int i = 0; i < customer.payment.Count; i++)
             {
                 if (customer.payment[i].name == "quarter")
                 {
-                    coins.Remove(customer.payment[i]);
+                    coins.Remove(customer.quarter);
                 }
                 if (customer.payment[i].name == "dime")
                 {
