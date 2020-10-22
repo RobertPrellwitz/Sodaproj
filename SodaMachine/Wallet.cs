@@ -60,28 +60,28 @@ namespace SodaMachine
 
         }
 
-        public void removeCoins(Customer customer)
-        {
-            for (int i = 0; i < customer.payment.Count; i++)
-            {
-                if (customer.payment[i].name == "quarter")
-                {
-                    coins.Remove(customer.payment[i]);
-                }
-                if (customer.payment[i].name == "dime")
-                {
-                    coins.Remove(customer.payment[i]);
-                }
-                if (customer.payment[i].name == "nickel")
-                {
-                    coins.Remove(customer.payment[i]);
-                }
-                if (customer.payment[i].name == "penny")
-                {
-                    coins.Remove(customer.payment[i]);
-                }
-            }
-        }
+        //public void removeCoins(Customer customer)
+        //{
+        //    for (int i = 0; i < customer.payment.Count; i++)
+        //    {
+        //        if (customer.payment[i].name == "quarter")
+        //        {
+        //            coins.Remove(customer.payment[i]);
+        //        }
+        //        if (customer.payment[i].name == "dime")
+        //        {
+        //            coins.Remove(customer.payment[i]);
+        //        }
+        //        if (customer.payment[i].name == "nickel")
+        //        {
+        //            coins.Remove(customer.payment[i]);
+        //        }
+        //        if (customer.payment[i].name == "penny")
+        //        {
+        //            coins.Remove(customer.payment[i]);
+        //        }
+        //    }
+        //}
         public void addCoins()
         {
             for (int i = 0; i < sodaMachine.changeCoins.Count; i++)
