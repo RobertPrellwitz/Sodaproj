@@ -57,15 +57,16 @@ namespace SodaMachine
 
             sodaMachine.ProcessPayment(customer);
 
-            sodaMachine.CurrentInventory();
-
-            customer.walletobj.removeCoins(customer);
-            //sodaMachine.MakeChange();
-            
+            sodaMachine.CurrentInventory();            
 
             customer.AddToBackPack();
 
-           // customer.walletobj.addCoins();
+            sodaMachine.TotalChange();
+
+            Console.WriteLine($"Your total change is: {Math.Round(sodaMachine.totalChange,2)}");
+
+
+            customer.AddToWallet(sodaMachine.changeCoins);
 
 
 
