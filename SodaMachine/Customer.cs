@@ -80,6 +80,8 @@ namespace SodaMachine
         }
 
         }
+
+        
         public void MakePayment(List<Coin> coins)
         {
             payment = new List<Coin>();
@@ -98,6 +100,7 @@ namespace SodaMachine
                         {
                             if (item.name == "penny")
                             {
+                                walletobj.coins.Remove(item);
                                 payment.Add(item);
                                 break;
                             }
@@ -111,6 +114,7 @@ namespace SodaMachine
                         {
                             if (item.name == "nickel")
                             {
+                                walletobj.coins.Remove(item);
                                 payment.Add(item);
                                 break;
                             }
@@ -123,6 +127,7 @@ namespace SodaMachine
                         {
                             if (item.name == "dime")
                             {
+                                walletobj.coins.Remove(item);
                                 payment.Add(item);
                                 break;
                             }
@@ -135,6 +140,7 @@ namespace SodaMachine
                         {
                             if (item.name == "quarter")
                             {
+                                walletobj.coins.Remove(item);
                                 payment.Add(item);
                                 break;
                             }
@@ -160,25 +166,15 @@ namespace SodaMachine
         {
             pack.sodas.Add(selection);
         }
-        //public void BackPackContents()
-        //{
-        //    for (int i = 0; i < pack.sodas.Count; i++)
-        //    {
-        //        Console.WriteLine($"{pack.sodas[i].name}");
-
-        //    }
-        //}
+        public void AddToWallet(List<Coin> coins)
+        {
+            for (int i = 0; i < coins.Count; i++)
+            {
+                walletobj.coins.Add(coins[i]);
+            }
+        }
+       
     }
 
 }
 
-//if (choice == 1)
-//{
-//    Console.WriteLine($"Please put in ${cola.Cost}");
-//    selection = cola;
-//}
-//else if (choice == 2)
-//{
-//    Console.WriteLine($"Please put in ${rootBeer.Cost}");
-//    selection = rootBeer;
-//}
