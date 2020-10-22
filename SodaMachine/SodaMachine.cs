@@ -16,6 +16,7 @@ namespace SodaMachine
         public int orangeCount;
         public double pmt;
         public double totalChange;
+        public double registerTotal;
         
 
         public List<Coin> changeCoins;
@@ -25,18 +26,18 @@ namespace SodaMachine
         {
            
             register = new List<Coin>();
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 0; i++)
             {
                 register.Add(new Quarter());
                 register.Add(new Nickel());
 
             }
-            for (int i = 0; i < 50; i++)
+            for (int i = 0; i < 0; i++)
             {
                 register.Add(new Penny());
 
             }
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 0; i++)
             {
                 register.Add(new Dime());
             }
@@ -51,6 +52,13 @@ namespace SodaMachine
             }
         }
 
+        public void RegisterTotal()
+        {
+            for (int i = 0; i < register.Count; i++)
+            {
+                registerTotal = registerTotal + register[i].Value;
+            }
+        }
         
         public void CurrentInventory()
         {
@@ -82,14 +90,18 @@ namespace SodaMachine
         }
         public void ProcessPayment(Customer customer)
         {
+            RegisterTotal();
              pmt=0;
             for (int i = 0; i < customer.payment.Count; i++)
             {
                 pmt = pmt + customer.payment[i].Value;
             }
+            
             if (pmt < customer.selection.Cost)
             {
                 // return money
+                Console.WriteLine("You did not put in enough money for this item");
+                customer.AddToWallet(customer.payment);
             }
             else if (pmt == customer.selection.Cost)
             {
@@ -97,10 +109,23 @@ namespace SodaMachine
                 DispenseProduct(customer);
             }
             else if (pmt > customer.selection.Cost)
+
             {
-                DepositPayment(customer);
-                DispenseProduct(customer);
-                MakeChange(customer,register);
+                if ((pmt - customer.selection.Cost) > registerTotal)
+                {
+                    Console.WriteLine("Please use exact change");
+                    customer.AddToWallet(customer.payment);
+                }
+                else
+                {
+                    double change = (pmt - customer.selection.Cost);
+                    DepositPayment(customer);
+                    DispenseProduct(customer);
+                    MakeChange(customer, register, change);
+                    TotalChange();
+                    Console.WriteLine($"Your Change is {totalChange}");
+                    customer.AddToWallet(changeCoins);
+                }
             }
 
 
@@ -114,10 +139,9 @@ namespace SodaMachine
        
         }
 
-        public void MakeChange(Customer customer, List<Coin> coins)
+        public void MakeChange(Customer customer, List<Coin> coins, double change)
         {
             //Math.Round()
-            double change = pmt - customer.selection.Cost;
             changeCoins = new List<Coin>();
             while (change > 0.25)
             {
@@ -191,6 +215,5 @@ namespace SodaMachine
             Can can = customer.selection;
             inventory.Remove(can);
         }
-
     }
 }

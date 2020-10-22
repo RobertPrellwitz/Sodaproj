@@ -28,29 +28,13 @@ namespace SodaMachine
 
         }
 
-        //public int SodaSelection()
-        //{
-        //    int choice;
-        //    bool check = Int32.TryParse(Console.ReadLine(), out choice);
-        //    if (check)
-        //    {
-        //        if (choice == 1 || choice == 2 || choice == 3)
-        //        {
-        //            return choice;
-        //        }
-        //        else
-        //        {
-                    
-        //        }
-        //    }
-        //}
-
 
         public void ChooseSoda(List<Can>cans,int choice)
         {
             
                 if (choice == 1)
                 {
+                
                     Console.WriteLine($"Please put in ${Cola.price}");
                     foreach (var can in cans)
                     {
@@ -95,13 +79,11 @@ namespace SodaMachine
             payment = new List<Coin>();
             double hand = 0;
             int temp=1;
+            int choice;
             do
             {
-                // console selection options 1 penny 2 nickel 3 dime 4 quarter
-                int choice;
-                bool check = Int32.TryParse(Console.ReadLine(), out choice);
-                if (check)
-                {
+                choice = UserInterface.CoinCheck();
+                
                     if (choice == 1)
                     {
                         foreach (var item in coins)
@@ -113,9 +95,7 @@ namespace SodaMachine
                                 hand = hand + item.Value;
                                 break;
                             }
-                            
                         }
-                        
                     }
                     if (choice == 2)
                     {
@@ -128,7 +108,6 @@ namespace SodaMachine
                                 hand = hand + item.Value;
                                 break;
                             }
-                          
                         }
                     }
                     if (choice == 3)
@@ -142,7 +121,6 @@ namespace SodaMachine
                                 hand = hand + item.Value;
                                 break;
                             }
-                           
                         }
                     }
                     if (choice == 4)
@@ -156,25 +134,18 @@ namespace SodaMachine
                                 hand = hand + item.Value;
                                 break;
                             }
-                            
                         }
                     }
-                    else
-                    {
-                        //MakePayment();
-                    }
                     Console.WriteLine($"You have selected coins that total {Math.Round(hand,2)}\n" );
-                    Console.WriteLine("Would you like to add another coin? 1 = yes 2 = no");
-
-                    temp = Convert.ToInt32(Console.ReadLine());
-
-                }
-                Console.WriteLine("Enter your next selection");
+                    
+                    temp = UserInterface.inputCheck();
+                    
+                   
             }
-            while (temp == 1);
-           
-             
+
+            while (temp == 1);     
         }
+
         public void AddToBackPack()
         {
             pack.sodas.Add(selection);
@@ -186,6 +157,8 @@ namespace SodaMachine
                 walletobj.coins.Add(coins[i]);
             }
         }
+
+       
        
     }
 

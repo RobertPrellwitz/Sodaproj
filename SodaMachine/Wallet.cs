@@ -30,6 +30,7 @@ namespace SodaMachine
         }
         public double TotalWallet()
         {
+            totalWallet = 0;
             for (int i = 0; i < coins.Count; i++)
             {
                 totalWallet = Math.Round(totalWallet + coins[i].Value, 2);

@@ -27,9 +27,17 @@ namespace SodaMachine
             UserInterface.Hello();
             sodaMachine.CurrentInventory();
             int buy =UserInterface.BuyQuestion();
+
             customer.ChooseSoda(sodaMachine.inventory, buy);
+
+
             UserInterface.WalletDisplay(customer,customer.walletobj);
             
+            customer.MakePayment(customer.walletobj.coins);
+            sodaMachine.ProcessPayment(customer);
+
+            UserInterface.WalletDisplay(customer, customer.walletobj);
+
         }
 
 
