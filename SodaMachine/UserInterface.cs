@@ -58,20 +58,20 @@ namespace SodaMachine
 
         public static int inputCheck()
         {
-            Console.WriteLine("would you like to add another coin?");
+            Console.WriteLine("would you like to add another coin? 1 for yes - 2 for no");
             int temp;
             bool checker = Int32.TryParse(Console.ReadLine(), out temp);
-            if (checker & (temp == 1 || temp == 2))
+            if (checker && (temp == 1 || temp == 2))
             {
                 return temp;
             }
             else
             {
                 Console.WriteLine("invalid selection try again.");
-                inputCheck();
-                //return 0;
+                return inputCheck();
+  
             }
-            return 0;
+           
         }
 
         public static int CoinCheck()
@@ -79,17 +79,18 @@ namespace SodaMachine
             Console.WriteLine("\nPlease select which coins to use:\n1 penny \n2 nickel \n3 dime \n4 quarter");
             int choice;
             bool check = Int32.TryParse(Console.ReadLine(), out choice);
-            if (check & (choice == 1 || choice == 2 || choice == 3 || choice == 4))
+            if (check && (choice == 1 || choice == 2 || choice == 3 || choice == 4))
             {
                 return choice;
             }
             else
             {
                 Console.WriteLine("invalid selection try again.");
-                CoinCheck();
-                //return 0;
+                return CoinCheck();
+
+
             }
-            return 0;
+            
         }
 
 
