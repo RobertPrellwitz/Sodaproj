@@ -66,7 +66,7 @@ namespace SodaMachine
             {
                 if (customer.payment[i].name == "quarter")
                 {
-                    coins.Remove(customer.quarter);
+                    coins.Remove(customer.payment[i]);
                 }
                 if (customer.payment[i].name == "dime")
                 {

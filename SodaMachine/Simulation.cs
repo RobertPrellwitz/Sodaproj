@@ -38,14 +38,13 @@ namespace SodaMachine
             //machine.MachineStock();
             sodaMachine.CurrentInventory();
 
-            customer.ChooseSoda();
+            customer.ChooseSoda(sodaMachine.inventory);
 
+            customer.walletobj.CurrentChange();
 
-            Console.WriteLine("\nPlease select which coins to use:\n1 penny \n2 nickel \n3 dime \n 4 quarter");
-            customer.MakePayment();
-            //customer.MakePayment();
-            //customer.MakePayment();
-
+            Console.WriteLine("\nPlease select which coins to use:\n1 penny \n2 nickel \n3 dime \n4 quarter");
+            customer.MakePayment(customer.walletobj.coins);
+            
             Console.WriteLine("you put the following in the machine");
             double total = 0;
             for (int i = 0; i < customer.payment.Count; i++)

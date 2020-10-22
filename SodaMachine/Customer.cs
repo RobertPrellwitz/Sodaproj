@@ -27,9 +27,9 @@ namespace SodaMachine
             walletobj = new Wallet();
 
         }
-        public void ChooseSoda()
+        public void ChooseSoda(List<Can>cans)
         {
-            Console.WriteLine($"Please select your soda\n 1 for Cola\n" +
+            Console.WriteLine($"Please select your soda\n\n 1 for Cola" +
                 $"\n2 for Root Beer\n3 for Orange Soda ");
             int choice;
             bool check = Int32.TryParse(Console.ReadLine(), out choice);
@@ -38,19 +38,41 @@ namespace SodaMachine
                 if (choice == 1)
                 {
                     Console.WriteLine($"Please put in ${cola.Cost}");
-                    selection = cola;
+                    foreach (var can in cans)
+                    {
+                        if (can.name == "Cola")
+                        {
+                            selection = can;
+                            break;
+                        }
+                    }
+                    
                 }
                 else if (choice == 2)
                 {
                     Console.WriteLine($"Please put in ${rootBeer.Cost}");
-                    selection = rootBeer;
+                    foreach (var can in cans)
+                    {
+                        if (can.name == "Root Beer")
+                        {
+                            selection = can;
+                            break;
+                        }
+                    }
                 }
 
                 else if (choice == 3)
                 {
                     Console.WriteLine($"Please put in ${orange.Cost}");
-                selection = orange;
-            }
+                    foreach (var can in cans)
+                    {
+                        if (can.name == "Orange")
+                        {
+                            selection = can;
+                            break;
+                        }
+                    }
+                }
             else
             {
                // ChooseSoda();
@@ -58,10 +80,10 @@ namespace SodaMachine
         }
 
         }
-        public void MakePayment()
+        public void MakePayment(List<Coin> coins)
         {
             payment = new List<Coin>();
-            walletobj.CurrentChange();
+            ///walletobj.CurrentChange();
             int temp=1;
             do
             {
@@ -72,19 +94,52 @@ namespace SodaMachine
                 {
                     if (choice == 1)
                     {
-                        payment.Add(new Penny());
+                        foreach (var item in coins)
+                        {
+                            if (item.name == "penny")
+                            {
+                                payment.Add(item);
+                                break;
+                            }
+                            
+                        }
+                        
                     }
                     if (choice == 2)
                     {
-                        payment.Add(new Nickel());
+                        foreach (var item in coins)
+                        {
+                            if (item.name == "nickel")
+                            {
+                                payment.Add(item);
+                                break;
+                            }
+                          
+                        }
                     }
                     if (choice == 3)
                     {
-                        payment.Add(new Dime());
+                        foreach (var item in coins)
+                        {
+                            if (item.name == "dime")
+                            {
+                                payment.Add(item);
+                                break;
+                            }
+                           
+                        }
                     }
                     if (choice == 4)
                     {
-                        payment.Add(new Quarter());
+                        foreach (var item in coins)
+                        {
+                            if (item.name == "quarter")
+                            {
+                                payment.Add(item);
+                                break;
+                            }
+                            
+                        }
                     }
                     else
                     {
@@ -95,9 +150,10 @@ namespace SodaMachine
                     temp = Convert.ToInt32(Console.ReadLine());
 
                 }
-
+                Console.WriteLine("Enter your next selection");
             }
             while (temp == 1);
+           
              
         }
         public void AddToBackPack()
