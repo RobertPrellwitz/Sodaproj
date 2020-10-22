@@ -24,27 +24,30 @@ namespace SodaMachine
 
         public void BuySoda()
         {
-            UserInterface.Hello();
-            sodaMachine.CurrentInventory();
-            int buy = UserInterface.CustomerSelectionCheck(sodaMachine);
-            
-            //int buy=UserInterface.BuyQuestion();
+            int temp;
+            do
+            {
+                UserInterface.Hello();
+                sodaMachine.CurrentInventory();
+                int buy = UserInterface.CustomerSelectionCheck(sodaMachine);
 
-            //sodaMachine.SelectionCheck(buy);
+                customer.ChooseSoda(sodaMachine.inventory, buy);
 
-            customer.ChooseSoda(sodaMachine.inventory, buy);
+                UserInterface.WalletDisplay(customer, customer.walletobj);
 
+                customer.MakePayment(customer.walletobj.coins);
+                sodaMachine.ProcessTransaction(customer);
 
-            UserInterface.WalletDisplay(customer,customer.walletobj);
-            
-            customer.MakePayment(customer.walletobj.coins);
-            sodaMachine.ProcessTransaction(customer);
+                UserInterface.WalletDisplay(customer, customer.walletobj);
+                sodaMachine.CurrentInventory();
+                sodaMachine.RegisterTotal();
+                customer.pack.BackPackContents();
+                Console.WriteLine("Would you like to use the soda machine again?");
+                temp = UserInterface.runCheck();
 
-            UserInterface.WalletDisplay(customer, customer.walletobj);
-
+            }
+            while (temp == 1);
         }
-
-
 
 
 
@@ -84,7 +87,7 @@ namespace SodaMachine
             Console.WriteLine($"which totals :{total}");
            
 
-            sodaMachine.ProcessPayment(customer);
+            sodaMachine.ProcessTransaction(customer);
 
             sodaMachine.CurrentInventory();            
 

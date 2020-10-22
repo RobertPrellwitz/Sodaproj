@@ -39,6 +39,19 @@ namespace SodaMachine
             }
         }
 
+        public static int CustomerSelectionCheck(SodaMachine soda)
+        {
+            int choice = BuyQuestion();
+            bool verify = soda.SelectionCheck(choice);
+            if (verify == true)
+            {
+                return choice;
+            }
+            else
+            {
+                return CustomerSelectionCheck(soda);
+            }
+        }
         public static void WalletDisplay(Customer customer, Wallet wallet)
         {
             Console.WriteLine("You have the follwing available in your wallet");
@@ -71,7 +84,6 @@ namespace SodaMachine
                 return inputCheck();
   
             }
-           
         }
 
         public static int CoinCheck()

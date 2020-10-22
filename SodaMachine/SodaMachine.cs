@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
+using System.Xml.Serialization;
+
 namespace SodaMachine
 {
     public class SodaMachine
@@ -46,7 +49,7 @@ namespace SodaMachine
             for (int i = 0; i < 5; i++)
             {
                 inventory.Add(new Cola());
-                inventory.Add(new RootBeer());
+                //inventory.Add(new RootBeer());
                 inventory.Add(new Orange());
 
             }
@@ -88,7 +91,55 @@ namespace SodaMachine
                  $"\n{orangeCount} orange sodas - cost {Orange.price}");
 
         }
-        public void ProcessPayment(Customer customer)
+        public bool SelectionCheck(int choice)
+        {
+            CurrentInventory();
+            if (choice == 1)
+            {
+                if (colaCount > 0)
+                {
+                    Console.WriteLine("nice Choice");
+                    return true;
+                }
+                else 
+                {
+                    Console.WriteLine("Cola inventory has been depleted. Perhaps another choice will suit you!");
+                    return false;
+                }
+            }
+            if (choice == 2)
+            {
+                if (rootBeerCount > 0)
+                {
+                    Console.WriteLine("nice Choice");
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("Root Beer inventory has been depleted. Perhaps another choice will suit you!");
+                    return false;
+                }
+            }
+            if (choice == 3)
+            {
+                if (orangeCount > 0)
+                {
+                    Console.WriteLine("nice Choice");
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("Orange soda inventory has been depleted. Perhaps another choice will suit you!");
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public void ProcessTransaction(Customer customer)
         {
             RegisterTotal();
              pmt=0;
