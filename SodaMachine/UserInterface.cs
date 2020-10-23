@@ -7,12 +7,12 @@ namespace SodaMachine
         {
         }
 
-        // soda machine - available products  (Machine)
+        
         public static void Hello()
         {
             Console.WriteLine("Welcome to the Soda Machine");
         }
-
+        // soda choice selection check
         public static int BuyQuestion()
         {
             Console.WriteLine("\n\nWhat Soda would you like to buy today? \n1 = Cola \n2 = Root Beer\n3 = Orange Soda");
@@ -52,6 +52,7 @@ namespace SodaMachine
                 return CustomerSelectionCheck(soda);
             }
         }
+        // method to display contents of wallet
         public static void WalletDisplay(Customer customer, Wallet wallet)
         {
             Console.WriteLine("You have the follwing available in your wallet");
@@ -59,16 +60,9 @@ namespace SodaMachine
             customer.walletobj.TotalWallet();
             Console.WriteLine($"This creates a total of ${wallet.totalWallet}");
         }
-        // Input Money -  (consumer)
-            // take money from wallet
-
-        public static void ConsumerPayment()
-        {
-            Console.WriteLine("\nPlease select which coins to use:\n1 penny \n2 nickel \n3 dime \n4 quarter");
-
-        }
-
-
+        
+        
+        // check method for using more than one coin
         public static int inputCheck()
         {
             Console.WriteLine("would you like to add another coin? 1 for yes - 2 for no");
@@ -85,7 +79,7 @@ namespace SodaMachine
   
             }
         }
-
+        //check method for coin input
         public static int CoinCheck()
         {
             Console.WriteLine("\nPlease select which coins to use:\n1 penny \n2 nickel \n3 dime \n4 quarter");
@@ -104,6 +98,7 @@ namespace SodaMachine
             }
             
         }
+        // check method for loop in simulation
         public static int runCheck()
         {
             int temp;
@@ -119,24 +114,5 @@ namespace SodaMachine
 
             }
         }
-
-
-        // Select Item - (consumer)
-
-
-        // Verify Selection is available (machine)
-        // if not available give option to select another or return money
-
-
-
-        // process payment  (machine)
-
-        // Dispense Product (machine)
-
-        // Return change if any (machine)
-
-        //  put item in backpac  (consumer)
-
-        //
     }
 }
