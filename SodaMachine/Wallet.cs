@@ -19,11 +19,12 @@ namespace SodaMachine
             totalWallet = 0;
             coins = new List<Coin>();
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 15; i++)
             {
                 coins.Add(new Quarter());
                 coins.Add(new Dime());
                 coins.Add(new Nickel());
+                coins.Add(new Penny());
             }
             
 

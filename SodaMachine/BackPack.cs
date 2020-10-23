@@ -18,10 +18,12 @@ namespace SodaMachine
         //}
         public void BackPackContents()
         {
+            Console.WriteLine("You have the following sodas in the back pack:\n");
             for (int i = 0; i < sodas.Count; i++)
             {
                 Console.WriteLine($"{sodas[i].name}");
             }
+            Console.WriteLine();
         }
     }
 }

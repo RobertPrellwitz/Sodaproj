@@ -28,7 +28,7 @@ namespace SodaMachine
             do
             {
                 UserInterface.Hello();
-                sodaMachine.CurrentInventory();
+                //sodaMachine.CurrentInventory();
                 int buy = UserInterface.CustomerSelectionCheck(sodaMachine);
 
                 customer.ChooseSoda(sodaMachine.inventory, buy);
@@ -37,12 +37,13 @@ namespace SodaMachine
 
                 customer.MakePayment(customer.walletobj.coins);
                 sodaMachine.ProcessTransaction(customer);
+                customer.AddToBackPack();
 
                 UserInterface.WalletDisplay(customer, customer.walletobj);
                 sodaMachine.CurrentInventory();
                 sodaMachine.RegisterTotal();
                 customer.pack.BackPackContents();
-                Console.WriteLine("Would you like to use the soda machine again?");
+                Console.WriteLine("Would you like to use the soda machine again?\n1 = yes \n2 = no");
                 temp = UserInterface.runCheck();
 
             }

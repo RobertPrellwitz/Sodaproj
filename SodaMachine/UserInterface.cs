@@ -15,7 +15,7 @@ namespace SodaMachine
 
         public static int BuyQuestion()
         {
-            Console.WriteLine("What Soda would you like to buy today? \n1 = Cola \n2 = Root Beer\n3 = Orange Soda");
+            Console.WriteLine("\n\nWhat Soda would you like to buy today? \n1 = Cola \n2 = Root Beer\n3 = Orange Soda");
             int choice;
             bool check = Int32.TryParse(Console.ReadLine(), out choice);
             if (check)
@@ -103,6 +103,21 @@ namespace SodaMachine
 
             }
             
+        }
+        public static int runCheck()
+        {
+            int temp;
+            bool checker = Int32.TryParse(Console.ReadLine(), out temp);
+            if (checker && (temp == 1 || temp == 2))
+            {
+                return temp;
+            }
+            else
+            {
+                Console.WriteLine("invalid selection try again.");
+                return runCheck();
+
+            }
         }
 
 

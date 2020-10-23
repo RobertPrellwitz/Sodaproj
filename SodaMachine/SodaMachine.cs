@@ -29,18 +29,18 @@ namespace SodaMachine
         {
            
             register = new List<Coin>();
-            for (int i = 0; i < 0; i++)
+            for (int i = 0; i < 020; i++)
             {
                 register.Add(new Quarter());
                 register.Add(new Nickel());
 
             }
-            for (int i = 0; i < 0; i++)
+            for (int i = 0; i < 50; i++)
             {
                 register.Add(new Penny());
 
             }
-            for (int i = 0; i < 0; i++)
+            for (int i = 0; i < 10; i++)
             {
                 register.Add(new Dime());
             }
@@ -49,7 +49,7 @@ namespace SodaMachine
             for (int i = 0; i < 5; i++)
             {
                 inventory.Add(new Cola());
-                //inventory.Add(new RootBeer());
+                inventory.Add(new RootBeer());
                 inventory.Add(new Orange());
 
             }
@@ -86,9 +86,9 @@ namespace SodaMachine
                 }
 
             }
-            Console.WriteLine($"The machine currently holds the following:\n" +
-                 $"{colaCount} cola - price {Cola.price} \n{rootBeerCount} Root Beer - cost  {RootBeer.price}" +
-                 $"\n{orangeCount} orange sodas - cost {Orange.price}");
+            Console.WriteLine($"\nThe machine currently holds the following:\n" +
+                 $"{colaCount} cola -      price {Cola.price} \n{rootBeerCount} Root Beer -   cost  {RootBeer.price}" +
+                 $"\n{orangeCount} orange sodas - cost {Orange.price}\n\n");
 
         }
         public bool SelectionCheck(int choice)
