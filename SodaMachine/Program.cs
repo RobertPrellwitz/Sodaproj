@@ -12,7 +12,7 @@ namespace SodaMachine
 
             Simulation Pepsi = new Simulation();
             //Pepsi.Purchase();
-            //Pepsi.BuySoda();
+            Pepsi.BuySoda();
             Pepsi.Purchase();
             
 
