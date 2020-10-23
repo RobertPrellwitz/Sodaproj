@@ -11,8 +11,11 @@ namespace SodaMachine
 
 
             Simulation Pepsi = new Simulation();
-            //Pepsi.Purchase();
+
+            //runs the basic soda machine and loops until user chooses stop
             Pepsi.BuySoda();
+
+            // runs the soda machine with the credit card payment option (does not loop)
             Pepsi.Purchase();
             
 
