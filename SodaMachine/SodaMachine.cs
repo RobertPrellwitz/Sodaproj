@@ -27,7 +27,8 @@ namespace SodaMachine
         public List<Can> inventory;
         public SodaMachine()
         {
-           
+           // machine initiation 
+
             register = new List<Coin>();
             for (int i = 0; i < 020; i++)
             {
@@ -91,6 +92,7 @@ namespace SodaMachine
                  $"\n{orangeCount} orange sodas - cost {Orange.price}\n\n");
 
         }
+        // inventory check vs customer selection
         public bool SelectionCheck(int choice)
         {
             CurrentInventory();
@@ -98,7 +100,7 @@ namespace SodaMachine
             {
                 if (colaCount > 0)
                 {
-                    Console.WriteLine("nice Choice");
+                    Console.WriteLine("Nice Choice!");
                     return true;
                 }
                 else 
@@ -111,7 +113,7 @@ namespace SodaMachine
             {
                 if (rootBeerCount > 0)
                 {
-                    Console.WriteLine("nice Choice");
+                    Console.WriteLine("My Favorite! Excellent Choice");
                     return true;
                 }
                 else
@@ -124,7 +126,7 @@ namespace SodaMachine
             {
                 if (orangeCount > 0)
                 {
-                    Console.WriteLine("nice Choice");
+                    Console.WriteLine("Only good when mixed with sprite....");
                     return true;
                 }
                 else
@@ -150,7 +152,7 @@ namespace SodaMachine
             
             if (pmt < customer.selection.Cost)
             {
-                // return money
+                
                 Console.WriteLine("You did not put in enough money for this item");
                 customer.AddToWallet(customer.payment);
             }

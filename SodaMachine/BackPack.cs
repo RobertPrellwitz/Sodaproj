@@ -12,10 +12,6 @@ namespace SodaMachine
             sodas = new List<Can>();
         }
 
-        //public void AddToBackPack()
-        //{
-        //    pack.sodas.Add(selection);
-        //}
         public void BackPackContents()
         {
             Console.WriteLine("You have the following sodas in the back pack:\n");

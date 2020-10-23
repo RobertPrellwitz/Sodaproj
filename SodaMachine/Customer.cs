@@ -35,7 +35,7 @@ namespace SodaMachine
                 if (choice == 1)
                 {
                 
-                    Console.WriteLine($"Please put in ${Cola.price}");
+                    Console.WriteLine($"Please put in ${Cola.price}\n");
                     foreach (var can in cans)
                     {
                         if (can.name == "Cola")
@@ -48,7 +48,7 @@ namespace SodaMachine
                 }
                 else if (choice == 2)
                 {
-                    Console.WriteLine($"Please put in ${RootBeer.price}");
+                    Console.WriteLine($"Please put in ${RootBeer.price}\n");
                     foreach (var can in cans)
                     {
                         if (can.name == "Root Beer")
@@ -61,7 +61,7 @@ namespace SodaMachine
 
                 else if (choice == 3)
                 {
-                    Console.WriteLine($"Please put in ${Orange.price}");
+                    Console.WriteLine($"Please put in ${Orange.price}\n");
                     foreach (var can in cans)
                     {
                         if (can.name == "Orange")
