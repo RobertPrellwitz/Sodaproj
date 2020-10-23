@@ -1,13 +1,13 @@
 ﻿using System;
 namespace SodaMachine
 {
-   static class UserInterface
+    static class UserInterface
     {
         static UserInterface()
         {
         }
 
-        
+
         public static void Hello()
         {
             Console.WriteLine("Welcome to the Soda Machine");
@@ -20,9 +20,9 @@ namespace SodaMachine
             bool check = Int32.TryParse(Console.ReadLine(), out choice);
             if (check)
             {
-                if (choice == 1 || choice == 2 || choice == 3 )
+                if (choice == 1 || choice == 2 || choice == 3)
                 {
-                    return  choice;
+                    return choice;
                 }
                 else
                 {
@@ -52,6 +52,36 @@ namespace SodaMachine
                 return CustomerSelectionCheck(soda);
             }
         }
+
+        // method to choose credit or cash
+        public static int PaymentType()
+        {
+            Console.WriteLine("Would you like to pay with Cash or Credit today?" +
+                "\n1 for Cash \n2 for Credit");
+            int choice;
+            bool check = Int32.TryParse(Console.ReadLine(), out choice);
+            if (check)
+            {
+                if (choice == 1)
+                {
+                    return 1;      // cash
+                }
+                else if (choice == 2)
+                {
+                    return 2;       // credit
+                }
+                else
+                {
+                    Console.WriteLine("Not a valid selection");
+                    return PaymentType();
+                }
+            }
+            else
+            {
+                return PaymentType();
+            }
+
+        }
         // method to display contents of wallet
         public static void WalletDisplay(Customer customer, Wallet wallet)
         {
@@ -59,9 +89,10 @@ namespace SodaMachine
             customer.walletobj.CurrentChange();
             customer.walletobj.TotalWallet();
             Console.WriteLine($"This creates a total of ${wallet.totalWallet}");
+            Console.WriteLine($"\nCredit Card {customer.walletobj.appleCard.name} has  {customer.walletobj.appleCard.availableFunds} available");
         }
-        
-        
+
+
         // check method for using more than one coin
         public static int inputCheck()
         {
@@ -76,7 +107,7 @@ namespace SodaMachine
             {
                 Console.WriteLine("invalid selection try again.");
                 return inputCheck();
-  
+
             }
         }
         //check method for coin input
@@ -96,7 +127,7 @@ namespace SodaMachine
 
 
             }
-            
+
         }
         // check method for loop in simulation
         public static int runCheck()
@@ -114,5 +145,5 @@ namespace SodaMachine
 
             }
         }
-    }
+    }    
 }

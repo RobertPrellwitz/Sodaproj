@@ -20,6 +20,7 @@ namespace SodaMachine
         public double pmt;
         public double totalChange;
         public double registerTotal;
+        public double creditPmtTotal;
         
 
         public List<Coin> changeCoins;
@@ -54,6 +55,7 @@ namespace SodaMachine
                 inventory.Add(new Orange());
 
             }
+            creditPmtTotal = 0;
         }
 
         public void RegisterTotal()
@@ -267,6 +269,17 @@ namespace SodaMachine
         {
             Can can = customer.selection;
             inventory.Remove(can);
+        }
+        public void CreditTransaction(Customer customer)
+        {
+            Can can = customer.selection;
+            if (customer.selection.Cost < customer.walletobj.appleCard.availableFunds)
+            {
+                customer.walletobj.appleCard.CreditPmt(customer.selection.Cost);
+                creditPmtTotal = creditPmtTotal + customer.selection.Cost;
+                inventory.Remove(can);
+
+            }
         }
     }
 }

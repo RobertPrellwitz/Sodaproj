@@ -53,12 +53,50 @@ namespace SodaMachine
 
         public void Purchase()
         {
+            UserInterface.Hello();
+
+            int buy = UserInterface.CustomerSelectionCheck(sodaMachine);
+
+            customer.ChooseSoda(sodaMachine.inventory, buy);
+
+            UserInterface.WalletDisplay(customer, customer.walletobj);
+
+            int type = UserInterface.PaymentType();
+
+            if(type == 1)
+            {
+                CashPmt();
+            }
+            else
+            {
+                CreditPmt();
+            }
             
-       
+
         }
                 
+        public void CreditPmt()
+        {
+            sodaMachine.CreditTransaction(customer);
+            customer.AddToBackPack();
+            sodaMachine.CurrentInventory();
+            sodaMachine.RegisterTotal();
+            Console.WriteLine($" Credit purchases total {sodaMachine.creditPmtTotal}"); 
+            customer.pack.BackPackContents();
+        }
 
 
+        public void CashPmt()
+        {
+            customer.MakePayment(customer.walletobj.coins);
+            sodaMachine.ProcessTransaction(customer);
+            customer.AddToBackPack();
+
+            UserInterface.WalletDisplay(customer, customer.walletobj);
+            sodaMachine.CurrentInventory();
+            sodaMachine.RegisterTotal();
+            customer.pack.BackPackContents();
+        }
 
 
 

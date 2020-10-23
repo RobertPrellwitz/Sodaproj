@@ -12,6 +12,8 @@ namespace SodaMachine
         public int pennyCount;
         public SodaMachine sodaMachine;
         public Customer customer;
+        public CreditCard appleCard;
+
 
         public Wallet()
         {
@@ -26,7 +28,8 @@ namespace SodaMachine
                 coins.Add(new Nickel());
                 coins.Add(new Penny());
             }
-            
+
+            appleCard = new CreditCard();
 
         }
         public double TotalWallet()
